@@ -10,9 +10,7 @@ class OpenWeatherMapSingleForecast extends OpenWeatherMapRepository implements W
     {
         $weatherList = parent::fetchWeather($city);
 
-        $weatherList = $this->getSingleForecast($weatherList);
-
-        return $weatherList;
+        return $this->getSingleForecast($weatherList);
     }
 
     private function getSingleForecast($weatherList)
@@ -38,5 +36,4 @@ class OpenWeatherMapSingleForecast extends OpenWeatherMapRepository implements W
         
         return $singleForecastList;
     }
-
 }

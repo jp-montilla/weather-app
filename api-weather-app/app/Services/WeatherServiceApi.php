@@ -10,7 +10,7 @@ class WeatherServiceApi
     public function fetchWeather(string $apiUrl, array $additionalHeaders = [])
     {
         $headers = [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ];
 
         $headers = array_merge($headers, $additionalHeaders);
