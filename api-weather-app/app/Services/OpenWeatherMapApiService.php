@@ -15,6 +15,10 @@ class OpenWeatherMapApiService
 
     public function getWeather($details)
     {
-        return $this->weatherForecastInterface->fetch($details, config('constants.weather_api_url'), config('constants.weather_api_key'));
+        return $this->weatherForecastInterface->fetch(
+            $details, 
+            config('constants.weather_api_url'), 
+            config('constants.weather_api_key')
+        );
     }
 }
