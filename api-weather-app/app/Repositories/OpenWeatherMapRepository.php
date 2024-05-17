@@ -19,4 +19,9 @@ class OpenWeatherMapRepository
 
         return $this->weatherServiceApi->fetchWeather($apiUrl);
     }
+
+    protected function getWeatherIcon(string $icon)
+    {
+        return 'https://openweathermap.org/img/wn/'.$icon.'.png';
+    }
 }
