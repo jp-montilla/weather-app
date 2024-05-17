@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Interfaces\WeatherForecastInterface;
-use App\Repositories\AllWeatherForecastRepository;
-use App\Repositories\SingleWeatherForecastRepository;
+use App\Repositories\OpenWeatherMapSingleForecast;
+use App\Repositories\OpenWeatherMapAllForecast;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -22,10 +22,10 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if ($this->app->request->solo == 1) {
-            $this->app->bind(WeatherForecastInterface::class, SingleWeatherForecastRepository::class);
+        if ($this->app->request->solo == 1 && $this->app->request->api == 'openWeatherMap') {
+            $this->app->bind(WeatherForecastInterface::class, OpenWeatherMapSingleForecast::class);
         } else {
-            $this->app->bind(WeatherForecastInterface::class, AllWeatherForecastRepository::class);
+            $this->app->bind(WeatherForecastInterface::class, OpenWeatherMapAllForecast::class);
         }
     }
 }

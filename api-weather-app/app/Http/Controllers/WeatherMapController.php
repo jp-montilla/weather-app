@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\OpenWeatherMapApiService;
+use App\Interfaces\WeatherForecastInterface;
 use Illuminate\Http\Request;
 
 class WeatherMapController extends Controller
 {
-    private $openWeatherMapApiService;
+    private $weatherForecastInterface;
 
-    public function __construct(OpenWeatherMapApiService $openWeatherMapApiService)
+    public function __construct(WeatherForecastInterface $weatherForecastInterface)
     {
-        $this->openWeatherMapApiService = $openWeatherMapApiService;
+        $this->weatherForecastInterface = $weatherForecastInterface;
     }
+
 
     public function getWeather(Request $request)
     {
-        $details = [
-            'city' => $request->city,
-            'solo' => $request->solo
-        ];
-
-        $weather = $this->openWeatherMapApiService->getWeather($details);
+        $weather = $this->weatherForecastInterface->fetchWeather($request->city);
 
         return $weather;
     }

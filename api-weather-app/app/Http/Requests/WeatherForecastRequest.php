@@ -23,7 +23,7 @@ class WeatherForecastRequest extends FormRequest
     {
         return [
             'city' => 'required|string',
-            'solo' => 'nullable|boolean',
+            'solo' => 'required|boolean',
         ];
     }
 }
