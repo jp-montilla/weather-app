@@ -2,9 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Interfaces\NearbyPlaceInterface;
 use App\Services\GetExternalApiService;
 
-class FourSquareRepository
+class FourSquareRepository implements NearbyPlaceInterface
 {
     private $getExternalApiService;
 

@@ -29,8 +29,8 @@ class RepositoryServiceProvider extends ServiceProvider
         } else {
             $this->app->bind(WeatherForecastInterface::class, OpenWeatherMapAllForecast::class);
         }
-        
-        if (config('constants.places_third_party_api') == 'fourSquare') {
+
+        if (config('constants.places_third_party_api') == 'foursquare') {
             $this->app->bind(NearbyPlaceInterface::class, FourSquareRepository::class);
         }
     }

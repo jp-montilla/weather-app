@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Interfaces\WeatherForecastInterface;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
 
 class GetExternalApiService
@@ -12,13 +13,16 @@ class GetExternalApiService
         $headers = [
             'Accept' => 'application/json',
         ];
-
+        
         $headers = array_merge($headers, $additionalHeaders);
 
-        $response = Http::withHeaders([$headers])->get($apiUrl);
+        $client = new Client();
+        $response = $client->request('GET', $apiUrl, [
+            'headers' => $headers,
+        ]);
+          
+        $formattedResponse = json_decode($response->getBody(), true);
 
-        $weatherList = json_decode($response->body(), true);
-
-        return $weatherList;
+        return $formattedResponse;
     }
 }

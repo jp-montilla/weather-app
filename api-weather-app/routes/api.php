@@ -10,4 +10,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/weather-forecast', [WeatherMapController::class, 'getWeather']);
-Route::get('/nearby-places', [NearbyPlaceController::class, 'fetchNearbyPlaces']);
+Route::get('/nearby-place', [NearbyPlaceController::class, 'fetchNearbyPlace']);
