@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Classes\ApiResponseClass;
+use App\Http\Requests\WeatherForecastRequest;
 use App\Interfaces\WeatherForecastInterface;
-use Illuminate\Http\Request;
 
 class WeatherMapController extends Controller
 {
@@ -16,12 +16,10 @@ class WeatherMapController extends Controller
     }
 
 
-    public function getWeather(Request $request)
+    public function getWeather(WeatherForecastRequest $request)
     {
         $weather = $this->weatherForecastInterface->fetchWeather($request->city);
 
         return ApiResponseClass::sendResponse($weather);
     }
-
-
 }
