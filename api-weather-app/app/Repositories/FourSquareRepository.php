@@ -33,7 +33,5 @@ class FourSquareRepository implements NearbyPlaceInterface
                     ->formatNearbyPlace(
                         $this->getExternalApiService->callThirdyPartyApi($apiUrl, $header)
                     );
-
-        // return $this->getExternalApiService->callThirdyPartyApi($apiUrl, $header);
     }
 }
