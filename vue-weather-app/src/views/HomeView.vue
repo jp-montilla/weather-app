@@ -1,48 +1,8 @@
 <template>
   <div>
-    <section class="header-background">
-      <h1>A Glimpse into the heart of <span>Japan</span></h1>
-    </section>
-
-    <section class="popular-destination">
-      <h2>Popular Destinations</h2>
-
-      <div class="destinations">
-        <RouterLink to="/city">
-        <div class="card">
-          <img src="https://wallpapers.com/images/featured/tokyo-dxva6ho3h8x6m3xb.jpg" alt="placeholder image">
-          <p><span class="action">Explore</span> Tokyo</p>
-        </div>
-        </RouterLink>
-
-        <RouterLink to="/city">
-        <div class="card">
-          <img src="https://images6.alphacoders.com/386/386844.jpg" alt="placeholder image">
-          <p><span class="action">Uncover</span> Yokohama</p>
-        </div>
-        </RouterLink>
-
-        <div class="card">
-          <img src="https://4kwallpapers.com/images/walls/thumbs_3t/4319.jpg" alt="placeholder image">
-          <p><span class="action">Discover</span> Kyoto</p>
-        </div>
-
-        <div class="card">
-          <img src="https://images4.alphacoders.com/596/596229.jpg" alt="placeholder image">
-          <p><span class="action">Relax</span> Osaka</p>
-        </div>
-
-        <div class="card">
-          <img src="https://images6.alphacoders.com/107/1076870.jpg" alt="placeholder image">
-          <p><span class="action">Wonder</span> Sapporo</p>
-        </div>
-
-        <div class="card">
-          <img src="https://wallpapers.com/images/hd/nagoya-osawari-castle-3xqzwhxaautsss95.jpg" alt="placeholder image">
-          <p><span class="action">Adventure</span> Nagoya</p>
-        </div>
-      </div>
-    </section>
+    <HeaderImage />
+    <PopularDestination />
+    
 
     <section class="main-weather">
       <div class="main-weather__container">
@@ -115,3 +75,10 @@
     </section>
   </div>
 </template>
+
+
+<script setup>
+  import HeaderImage from '../components/HeaderImage.vue'
+  import PopularDestination from '../components/PopularDestination.vue'
+
+</script>
