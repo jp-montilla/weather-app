@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use App\Interfaces\WeatherForecastInterface;
+use Exception;
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class GetExternalApiService
 {
@@ -17,12 +17,25 @@ class GetExternalApiService
         $headers = array_merge($headers, $additionalHeaders);
 
         $client = new Client();
-        $response = $client->request('GET', $apiUrl, [
-            'headers' => $headers,
-        ]);
-          
-        $formattedResponse = json_decode($response->getBody(), true);
 
-        return $formattedResponse;
+        try
+        {
+            $response = $client->request('GET', $apiUrl, [
+                'headers' => $headers,
+            ]);
+              
+            $formattedResponse = json_decode($response->getBody(), true);
+    
+            return $formattedResponse;
+        }
+        catch (Exception $e)
+        {
+            $response = [
+                'code' => 404,
+                'message' => 'City not found',
+            ];
+
+            throw new HttpResponseException(response()->json($response, 500));
+        }
     }
 }
