@@ -1,35 +1,439 @@
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+.header-background {
+  display: flex;
+  height: 95vh;
+  background: url('images/japan-4k.jpg') no-repeat center center / cover;
+  align-items: center;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.header-background > h1 {
+  font-family: laoriental;
+  font-size: 5rem;
+  font-weight: 100;
+  color: var(--primary-color);
+  width: 50%;
+  padding: 0 0 0 5vw;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+.header-background > h1 > span {
+  color: var(--secondary-color);
+  font-size: 6rem;
+}
+
+.popular-destination {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 8vh;
+}
+
+.popular-destination > h2 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  padding: 0 0 30px 0;
+}
+
+.popular-destination > .destinations {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px 30px;
+  width: 80%;
+}
+
+/* CARDS */
+.card {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 2px 2px 20px gray, inset 2px 2px 10px lightgray;
+  transition: all 1s ease-in-out 0s;
+}
+
+.card:hover {
+  box-shadow: 4px 4px 25px black, inset 2px 2px 2px 10px rgb(0, 0, 20);
+  cursor: pointer;
+}
+
+.card > img {
+  height: 100%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.card > p {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  transform: translateY(-80%);
+  left: 10%;
+  font-size: 3.5rem;
+  color: var(--primary-color);
+}
+
+.card > p > .action {
+  font-family: blackpine;
+  font-size: 4.5rem;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--secondary-color);
+}
+
+/* weather section */
+.main-weather {
+  background: url('images/japan.jpg') no-repeat center center / cover;
+  height: 75vh;
+}
+
+.main-weather__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto auto;
+  width: 80%;
+  color: var(--primary-color);
+}
+
+.main-weather__container > h1 {
+  font-weight: 900;
+  font-size: 4rem;
+  width: 100%;
+  text-align: end;
+}
+
+.main-weather__container > .city-weather {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.main-weather__container > .city-weather:hover {
+  cursor: pointer;
+}
+
+.main-weather__container > .city-weather > ol {
+  padding: 0;
+  transition: all 0.5s ease-in-out 0s;
+  border-bottom: 4px solid var(--primary-color);
+}
+
+.main-weather__container > .city-weather > ol:hover,
+.main-weather__container > .city-weather > .active {
+  border-bottom: 10px solid var(--secondary-color);
+}
+
+
+.main-weather__container > .week-weather-report {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 30px 30px;
+  width: 90%;
+}
+
+/* small card weather */
+.weather-small-card {
+  background: var(--weather-bg-fade-color);
+  border-radius: 20px;
+  padding: 10px 30px;
+  width: 10vw;
+}
+
+.weather-small-card > .weather-header {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.weather-small-card > .weather-header > .weather-icon{
+  height: 80px;
+}
+
+.weather-small-card > .weather-description {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+}
+
+.weather-small-card > .weather-description > .weather-description__description{
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+}
+/* end small card weather */
+
+/* footer */
+footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* responsiveness */
+@media only screen and (max-width: 1500px) {
+  .main-weather__container {
+    width: 90%;
   }
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
+@media only screen and (max-width: 1200px) {
+  .popular-destination > .destinations {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .card {
+    height: 400px;
   }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+  .card > p{
+    font-size: 2.5rem;
+  }
+
+  .card > p > .action {
+    font-size: 4rem;
+  }
+
+  .main-weather__container > .city-weather {
+    font-size: 1.5rem;
+  }
+
+  .weather-small-card > .weather-header {
+    font-size: 1.5rem;
+  }
+
+  .weather-small-card > .weather-header {
+    padding-bottom: 10px;
+  }
+
+  .weather-small-card > .weather-header > .weather-icon {
+    height: 100%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .main-weather {
+    height: 85vh;
+  }
+
+  .main-weather__container > .city-weather {
+    justify-content: space-between;
+  }
+
+  .main-weather__container > .week-weather-report {
+    gap: 10px 10px;
+    width: 100%;
+  }
+}
+
+@media only screen and (width: 1024px), only screen and (height: 1366px) {
+  .main-weather {
+    height: 60vh;
+  }
+
+  .main-weather__container > .week-weather-report {
+    grid-template-columns: auto auto auto;
+  }
+
+  .weather-small-card {
+    width: 20vw;
+  }
+}
+
+@media only screen and (width: 1024px), only screen and (height: 600px) {
+  .main-weather {
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .header-background > h1 {
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (width: 853px), only screen and (height: 1280px) {
+  .main-weather {
+    height: 60vh;
+  }
+
+  .main-weather__container > .week-weather-report {
+    grid-template-columns: auto auto auto;
+  }
+
+  .weather-small-card {
+    width: 20vw;
+  }
+}
+
+@media only screen and (width: 820px), only screen and (height: 1180px) {
+  .main-weather {
+    height: 60vh;
+  }
+
+  .main-weather__container > .week-weather-report {
+    grid-template-columns: auto auto auto;
+  }
+
+  .weather-small-card {
+    width: 20vw;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .popular-destination > .destinations {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 30px;
+  }
+
+  .main-weather__container > .city-weather {
+    font-size: 1.25rem;
+  }
+
+  .main-weather__container > .week-weather-report {
+    grid-template-columns: auto auto auto;
+    gap: 10px 10px;
+    width: 90%;
+  }
+
+  .weather-small-card {
+    width: 20vw;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .header-background > h1 {
+    font-size: 3rem;
+  }
+
+  .main-weather {
+    height: 90vh;
+  }
+
+  .main-weather__container > h1 {
+    font-size: 3.5rem;
+  }
+
+  .main-weather__container > .week-weather-report {
+    grid-template-columns: auto auto;
+  }
+
+  .weather-small-card {
+    width: 30vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main-weather {
+    height: 95vh;
+  }
+
+  .main-weather__container > .city-weather {
+    padding: 0;
+    font-size: 1.1rem;
+  }
+  
+  .weather-small-card > .weather-description > .weather-description__description {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .header-background > h1 {
+    font-size: 2.5rem;
+  }
+
+  .header-background > h1 > span {
+    font-size: 4.5rem;
+  }
+
+  .popular-destination > h2 {
+    font-size: 2.5rem;
+  }
+
+  .popular-destination > .destinations {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .card > p {
+    font-size: 4rem;
+  }
+
+  .card > p > .action {
+    font-size: 5rem;
+  }
+
+  .weather-small-card > .weather-header {
+    padding-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .main-weather {
+    height: 100vh;
+  }
+
+  .main-weather__container > .city-weather > ol {
+    padding: 0 20px;
+    margin: 0 0 20px 0;
+  }
+
+  .weather-small-card {
+    padding: 10px 20px;
+  }
+
+  .header-background > h1 {
+    font-size: 2rem;
+  }
+
+  .popular-destination > h2 {
+    font-size: 2rem;
+  }
+
+  .card > p {
+    font-size: 3rem;
+  }
+
+  .main-weather {
+    height: 110vh;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .header-background > h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-background > h1 > span {
+    font-size: 3.5rem;
+  }
+
+  .popular-destination > h2 {
+    font-size: 1.8rem;
+  }
+
+  .card > p > .action {
+    font-size: 4rem;
+  }
+
+  .main-weather__container > h1 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  .main-weather__container > .city-weather > ol {
+    width: 30%;
+    text-align: center;
+    margin: 0 0 5px 0;
   }
 }
