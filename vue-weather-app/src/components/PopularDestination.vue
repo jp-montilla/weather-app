@@ -11,15 +11,12 @@
 </template>
 
 <script setup>
-  import { onMounted, ref, inject } from 'vue';
-
   import SpotlightCard from './SpotlightCard.vue'
 
-  const cities = ref(null);
-  
-  const popularDestinationService = inject('popularDestinationService')
-
-  onMounted(() => {
-    popularDestinationService.getPopularDestination().then(data => cities.value = data.data)
+  const props = defineProps({
+    cities: {
+      type: Object,
+      required: true
+    }
   })
 </script>
