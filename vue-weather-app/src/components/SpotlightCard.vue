@@ -9,13 +9,12 @@
 </template>
 
 <script setup>
-import Image from './Image.vue'
+  import Image from './Image.vue'
 
-const props = defineProps({
-  city: {
-    type: Object,
-    required: true,
-  }
-})
-
+  const props = defineProps({
+    city: {
+      type: Object,
+      required: true,
+    }
+  })
 </script>

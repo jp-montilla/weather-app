@@ -5,12 +5,10 @@
 </template>
 
 <script setup>
-
   const props = defineProps({
     cities: {
       type: Array,
       required: true
     }
   })
-
 </script>

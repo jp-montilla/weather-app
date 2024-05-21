@@ -12,7 +12,6 @@
 </template>
 
 <script setup>
-
   import Image from './Image.vue'
 
   const imageObject = {
