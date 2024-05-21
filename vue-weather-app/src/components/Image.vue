@@ -1,14 +1,18 @@
 <template>
-  <img :src=imageObject.source :alt=imageObject.alt v-bind="$attrs">
+  <img :src=source :alt=alt v-bind="$attrs">
 </template>
 
 <script setup>
   
   const props = defineProps({
-    imageObject: {
-      type: Object,
+    source: {
+      type: String,
       required: true,
-    }
+    },
+    alt: {
+      type: String,
+      required: true,
+    },
   })
 
 </script>
