@@ -2,12 +2,9 @@
 
 use App\Http\Controllers\WeatherMapController;
 use App\Http\Controllers\NearbyPlaceController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\PopularDestinationController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
 
 Route::get('/weather-forecast', [WeatherMapController::class, 'getWeather']);
 Route::get('/nearby-place', [NearbyPlaceController::class, 'fetchNearbyPlace']);
+Route::get('/popular-destinations', [PopularDestinationController::class, 'fetchPopularDestination']);
