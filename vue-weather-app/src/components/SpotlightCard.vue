@@ -15,6 +15,6 @@
     city: {
       type: Object,
       required: true,
-    }
+    },
   })
 </script>

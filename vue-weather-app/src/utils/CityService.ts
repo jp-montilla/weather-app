@@ -1,8 +1,8 @@
-import { CityServiceInterface } from "./CityServiceInterface";
+import { CityServiceInterface } from "@/interfaces/CityServiceInterface";
 
 import { inject } from 'vue'
 
-export class CityService extends CityServiceInterface {
+export class CityService implements CityServiceInterface {
   async getCities () {
     const apiBaseUrl = inject('apiBaseUrl')
     

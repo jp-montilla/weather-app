@@ -3,7 +3,7 @@
     <div class='main-weather__container'>
       <h1>The Japan Weather</h1>
 
-      <WeatherList :cities=cities />
+      <WeatherList :cities=cities :activeCity=activeCity />
 
       <div class='week-weather-report'>
         <WeatherSmallCard />
@@ -15,6 +15,20 @@
 <script setup>
   import WeatherList from './WeatherList.vue'
   import WeatherSmallCard from './WeatherSmallCard.vue'
+  
+  const props = defineProps({
+    cities: {
+      type: Object,
+      required: true,
+    },
+    activeCity: {
+      type: String,
+      required: true,
+    },
+    weatherForecast: {
+      type: Object,
+      required: true,
+    },
+  })
 
-  const cities = ['Tokyo','Yokohama','Kyoto','Osaka','Sapporo','Nagoya']
 </script>

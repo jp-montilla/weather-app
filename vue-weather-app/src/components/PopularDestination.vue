@@ -16,7 +16,7 @@
   const props = defineProps({
     cities: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   })
 </script>

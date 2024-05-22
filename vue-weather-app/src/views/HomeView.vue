@@ -2,7 +2,7 @@
   <div>
     <HeaderImage />
     <PopularDestination :cities=cities />
-    <WeatherOverview />
+    <WeatherOverview :cities=cities :activeCity=activeCity @setActiveCity=setActiveCity />
   </div>
 </template>
 
@@ -11,13 +11,25 @@
   import PopularDestination from '../components/PopularDestination.vue'
   import WeatherOverview from '../components/WeatherOverview.vue'
 
-  import { ref, inject, onMounted } from 'vue';
+  import { ref, inject, onMounted } from 'vue'
 
-  const cities = ref(null);
+  const cities = ref(null)
+
+  const activeCity = ref('Tokyo')
+  
+  const weatherForecast = ref(null) 
   
   const cityService = inject('cityService')
 
+  const weatherForecastService = inject('weatherForecastService')
+
   onMounted(() => {
     cityService.getCities().then(data => cities.value = data.data)
+    weatherForecastService.getWeatherForecast().then(data => weatherForecast.value = data.data)
   })
+
+  function setActiveCity(city) {
+    activeCity.value = city
+  }
+
 </script>
