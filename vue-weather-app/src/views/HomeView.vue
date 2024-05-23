@@ -2,7 +2,11 @@
   <div>
     <HeaderImage />
     <PopularDestination :cities=cities />
-    <WeatherOverview :cities=cities :activeCity=activeCity @setActiveCity=setActiveCity />
+    <WeatherOverview :cities=cities 
+        :activeCity=activeCity
+        :weatherForecast=weatherForecast
+        @setActiveCity=setActiveCity 
+    />
   </div>
 </template>
 

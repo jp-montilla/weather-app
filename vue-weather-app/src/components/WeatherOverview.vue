@@ -6,7 +6,9 @@
       <WeatherList :cities=cities :activeCity=activeCity />
 
       <div class='week-weather-report'>
-        <WeatherSmallCard />
+        <div class='weather-small-card' v-for="forecast in weatherForecast" :key="forecast.date">
+          <WeatherSmallCard :forecast=forecast />
+        </div>
       </div>
     </div>
   </section>
