@@ -26,14 +26,21 @@
   const cityService = inject('cityService')
 
   const weatherForecastService = inject('weatherForecastService')
+  
+  const weatherForecastApiUrl = inject('apiBaseUrl') + '/' + inject('weatherForecastPath')
 
   onMounted(() => {
     cityService.getCities().then(data => cities.value = data.data)
-    weatherForecastService.getWeatherForecast().then(data => weatherForecast.value = data.data)
+    updateWeatherList()
   })
 
   function setActiveCity(city) {
     activeCity.value = city
+    updateWeatherList()
+  }
+
+  function updateWeatherList() {
+    weatherForecastService.getWeatherForecast(weatherForecastApiUrl, activeCity.value).then(data => weatherForecast.value = data.data)
   }
 
 </script>

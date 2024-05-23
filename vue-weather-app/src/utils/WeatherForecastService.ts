@@ -3,15 +3,15 @@ import { PostApiCallService } from "./PostApiCallService";
 
 import { inject } from 'vue'
 
-export class WeatherForecastService extends PostApiCallService implements WeatherForecastServiceInterface {
-  async getWeatherForecast (solo = 1) {
-    const path = inject('weatherForecastPath')
+export class WeatherForecastService extends PostApiCallService {
+  async getWeatherForecast (apiUrl, city = 'tokyo', solo = 1) {
     const parameters = {
-      city: 'tokyo',
+      city: city,
       solo: solo,
     }
 
-    let forecast = super.getApiCall(path, parameters)
+    console.log()
+    let forecast = super.getApiCall(apiUrl, parameters)
 
     return forecast
   }
