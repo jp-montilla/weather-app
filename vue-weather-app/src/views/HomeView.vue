@@ -15,32 +15,41 @@
   import PopularDestination from '../components/PopularDestination.vue'
   import WeatherOverview from '../components/WeatherOverview.vue'
 
-  import { ref, inject, onMounted } from 'vue'
+  import useLandingPage from '../composables/useLandingPage.ts'
 
-  const cities = ref(null)
+  // import { ref, inject, onMounted } from 'vue'
 
-  const activeCity = ref('Tokyo')
+  // const cities = ref(null)
+
+  // const activeCity = ref('Tokyo')
   
-  const weatherForecast = ref(null) 
+  // const weatherForecast = ref(null) 
   
-  const cityService = inject('cityService')
+  // const cityService = inject('cityService')
 
-  const weatherForecastService = inject('weatherForecastService')
+  // const weatherForecastService = inject('weatherForecastService')
   
-  const weatherForecastApiUrl = inject('apiBaseUrl') + '/' + inject('weatherForecastPath')
+  // const weatherForecastApiUrl = inject('apiBaseUrl') + '/' + inject('weatherForecastPath')
 
-  onMounted(() => {
-    cityService.getCities().then(data => cities.value = data.data)
-    updateWeatherList()
-  })
+  // onMounted(() => {
+  //   cityService.getCities().then(data => cities.value = data.data)
+  //   updateWeatherList()
+  // })
 
-  function setActiveCity(city) {
-    activeCity.value = city
-    updateWeatherList()
-  }
+  // function setActiveCity(city) {
+  //   activeCity.value = city
+  //   updateWeatherList()
+  // }
 
-  function updateWeatherList() {
-    weatherForecastService.getWeatherForecast(weatherForecastApiUrl, activeCity.value).then(data => weatherForecast.value = data.data)
-  }
+  // function updateWeatherList() {
+  //   weatherForecastService.getWeatherForecast(weatherForecastApiUrl, activeCity.value).then(data => weatherForecast.value = data.data)
+  // }
+
+  const {
+    cities,
+    activeCity,
+    weatherForecast,
+    cityService,
+  } = useLandingPage()
 
 </script>

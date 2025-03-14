@@ -2,7 +2,7 @@ import { inject } from 'vue'
 
 export class PostApiCallService {
   async getApiCall(apiUrl, parameters = {}) {
-    console.log(apiUrl)
+    
     try {
       const requestOptions = {
         method: "POST",
