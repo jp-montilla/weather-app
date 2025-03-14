@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Interfaces\NearbyPlaceInterface;
+use App\Interfaces\PopularDestinationInterface;
 use App\Interfaces\WeatherForecastInterface;
 use App\Repositories\FourSquareRepository;
 use App\Repositories\OpenWeatherMapSingleForecast;
 use App\Repositories\OpenWeatherMapAllForecast;
+use App\Repositories\PopularDestinationRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -33,5 +35,7 @@ class RepositoryServiceProvider extends ServiceProvider
         if (config('constants.places_third_party_api') == 'foursquare') {
             $this->app->bind(NearbyPlaceInterface::class, FourSquareRepository::class);
         }
+
+        $this->app->bind(PopularDestinationInterface::class, PopularDestinationRepository::class);
     }
 }
